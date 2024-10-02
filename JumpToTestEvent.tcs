@@ -1,0 +1,12 @@
+//jump to TestEvent
+JumptoNode "/Execution/ExecutionLists/EL"
+//Checkout Each ExecutionList
+For "=>SUBPARTS->AllReferences:ExecutionList" TaskOnEach "Checkout Tree"
+//jump to TestEvent
+Task "Jump to Object" 3a136851-d90d-d181-50fd-7eccf34544b4
+//Trigger the CustomIntegration for each ExecutionList
+//Please Note: You would need to provide the complete path for the TriggerCustomIntegrtaion.tcs file incase you are not placing in the same location as this file
+For "=>SUBPARTS->AllReferences:ExecutionList" CallOnEach "./TriggerCustomIntegration.tcs"
+//save the changes
+checkinall
+//exit
